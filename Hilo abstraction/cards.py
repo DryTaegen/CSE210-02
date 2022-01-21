@@ -7,7 +7,7 @@ class Cards:
     
     Attributes:
     number (int): The number of the chosen card
-    points (int): The number of points the card is worth
+    points (int): The number of points the correct or incorrect choice is worth
     choice (str): The user input that is h or l
     '''
 
@@ -22,7 +22,7 @@ class Cards:
         self.choice = ''
 
     def select_card(self):
-        '''Generates a new random number and calculates the points
+        '''Generates a new random card and calculates the points
         
         Args:
         self (Cards): An instance of Cards
