@@ -53,7 +53,7 @@ class Director:
         for i in range(len(self.cards)):
             card = self.cards[i]
             card.select_card()
-            self.total_points == card.points
+            self.total_points = card.points
 
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 
@@ -67,5 +67,5 @@ class Director:
             value = f'{card.value}'
         print(f'The next card was: {value}')
         print(f"Your score is: {self.total_points}\n")
-        self.is_playing == (self.score > 0)
+        self.is_playing == (self.total_points > 0)
         y_n = input('Play again? [y/n]: ')

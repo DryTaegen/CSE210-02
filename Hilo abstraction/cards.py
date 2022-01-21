@@ -11,7 +11,7 @@ class Cards:
     choice (str): The user input that is h or l
     '''
 
-    def init(self):
+    def __init__(self):
         '''Constructs a new instance of Cards with a number and points attribute.
 
         Args:
@@ -32,16 +32,16 @@ class Cards:
         self.value = random.randint(1,13)
 
         if  self.choice == 'h' and self.value > number:
-            self.points == self.points + 100
+            self.points = (self.points + 100)
 
         if self.choice == 'l' and self.value < number:
-            self.points == self.points + 100
+            self.points = (self.points + 100)
 
         if self.choice == 'h' and self.value < number:
-            self.points == self.points - 75
+            self.points = (self.points - 75)
 
         if self.choice == 'l' and self.value > number:
-            self.points == self.points - 75
+            self.points = (self.points - 75)
 
         else:
             0
