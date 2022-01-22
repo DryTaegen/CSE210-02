@@ -28,14 +28,17 @@ class Director:
         """
         while self.is_playing:
             self.higher_or_lower()
-            self.do_updates()
             self.do_outputs()
+            self.game_restart()
 
     def higher_or_lower(self):
         '''Ask the user if the next card is higher or lower and updates their score
         Args:
         self(Director): An instance of Director
         ''' 
+        if not self.is_playing:
+            return
+            
         print(f'The card is {self.cards.current_card_num}')       
         h_or_l = input('Higher or Lower [h/l]: ')
         print(h_or_l)
@@ -48,8 +51,14 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        if not self.is_playing:
+            return
 
         print(f'The next card was: {self.cards.current_card_num}')
         print(f"Your score is: {self.total_points}\n")
         self.is_playing == (self.total_points > 0)
+        
+        
+    def game_restart(self):
         y_n = input('Play again? [y/n]: ')
+        self.is_playing = (y_n == "y")
