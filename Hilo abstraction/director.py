@@ -7,7 +7,7 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        cards (List[Cards]): A list of Die instances.
+        cards (List[Cards]): A list of card instances.
         total_points (int): The score for the entire game.
     """
     def __init__(self):
@@ -41,7 +41,7 @@ class Director:
         self.total_points += self.cards.select_card(h_or_l)
 
     def do_outputs(self):
-        """Displays the dice and the score. Also asks the player if they want to roll again. 
+        """Displays the card chosen and the score. Also asks the player if they want to choose another card. 
 
         Args:
             self (Director): An instance of Director.
