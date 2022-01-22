@@ -16,13 +16,9 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.cards = []
+        self.cards = Cards()
         self.is_playing = True
         self.total_points = 300
-
-        for i in range(13):
-            cards = Cards()
-            self.cards.append(cards)
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -36,25 +32,15 @@ class Director:
             self.do_outputs()
 
     def higher_or_lower(self):
-        '''Ask the user if the next card is higher or lower
+        '''Ask the user if the next card is higher or lower and updates their score
         Args:
         self(Director): An instance of Director
         ''' 
-        number = random.randint(1,13)
-        print(f'The card is {number}')       
+        print(f'The card is {self.cards.current_card_num}')       
         h_or_l = input('Higher or Lower [h/l]: ')
         print(h_or_l)
-
-    def do_updates(self):
-        """Updates the player's score.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        for i in range(len(self.cards)):
-            card = self.cards[i]
-            card.select_card()
-            self.total_points = card.points
+        
+        self.total_points += self.cards.select_card(h_or_l)
 
     def do_outputs(self):
         """Displays the card chosen and the score. Also asks the player if they want to choose another card. 
@@ -63,10 +49,7 @@ class Director:
             self (Director): An instance of Director.
         """
 
-        for i in range(len(self.cards)):
-            card = self.cards[i]
-            value = f'{card.value}'
-        print(f'The next card was: {value}')
+        print(f'The next card was: {self.cards.current_card_num}')
         print(f"Your score is: {self.total_points}\n")
         self.is_playing == (self.total_points > 0)
         y_n = input('Play again? [y/n]: ')
