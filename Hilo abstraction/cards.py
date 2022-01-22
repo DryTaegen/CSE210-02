@@ -17,32 +17,32 @@ class Cards:
         Args:
         self (Cards): An instance of Cards.
         '''
-        self.value = 0
-        self.points = 300
-        self.choice = ''
+        self.current_card_num = random.randint(1, 13)
+        self.next_card_num = random.randint(1, 13)
 
-    def select_card(self):
+    def select_card(self, choice):
         '''Generates a new random number and calculates the points
         
         Args:
         self (Cards): An instance of Cards
         '''
-        number = random.randint(1,13)
+        
+        points = 0
 
-        self.value = random.randint(1,13)
+        if choice == 'h' and self.next_card_num > self.current_card_num:
+            points +=  100
 
-        if  self.choice == 'h' and self.value > number:
-            self.points = (self.points + 100)
+        if choice == 'l' and self.next_card_num < self.current_card_num:
+            points += 100
 
-        if self.choice == 'l' and self.value < number:
-            self.points = (self.points + 100)
+        if choice == 'h' and self.next_card_num < self.current_card_num:
+            points -= 75
 
-        if self.choice == 'h' and self.value < number:
-            self.points = (self.points - 75)
-
-        if self.choice == 'l' and self.value > number:
-            self.points = (self.points - 75)
-
-        else:
-            0
+        if choice == 'l' and self.next_card_num > self.current_card_num:
+            points -= 75
+    
+        self.current_card_num = self.next_card_num
+        self.next_card_num = random.randint(1, 13)
+            
+        return points
     
