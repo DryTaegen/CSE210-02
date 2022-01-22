@@ -30,9 +30,10 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.higher_or_lower()
-        self.do_updates()
-        self.do_outputs()
+        while self.is_playing:
+            self.higher_or_lower()
+            self.do_updates()
+            self.do_outputs()
 
     def higher_or_lower(self):
         '''Ask the user if the next card is higher or lower
