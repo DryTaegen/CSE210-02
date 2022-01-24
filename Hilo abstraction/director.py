@@ -61,4 +61,8 @@ class Director:
         
     def game_restart(self):
         y_n = input('Play again? [y/n]: ')
-        self.is_playing = (y_n == "y")
+        if self.total_points > 0:
+            self.is_playing = (y_n == "y")
+        elif self.total_points <= 0:
+            print("Sorry! you are out of points.")
+            self.is_playing = False
