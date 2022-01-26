@@ -45,8 +45,7 @@ class Director:
             if (h_or_l.lower() == "h") or (h_or_l.lower() == "l"):
                 print(h_or_l)
                 break
-            else:
-                print(f"Sorry, {h_or_l} was not recognized.")
+            print(f"Sorry, {h_or_l} was not recognized.")
         
         self.total_points += self.cards.select_card(h_or_l)
 
@@ -74,5 +73,4 @@ class Director:
                     print("Sorry! you are out of points.")
                     self.is_playing = False
                 break
-            else:
-                print(f"Sorry, {y_n} was not recognized.")
+            print(f"Sorry, {y_n} was not recognized.")
