@@ -39,9 +39,14 @@ class Director:
         if not self.is_playing:
             return
             
-        print(f'The card is {self.cards.current_card_num}')       
-        h_or_l = input('Higher or Lower [h/l]: ')
-        print(h_or_l)
+        print(f'The card is {self.cards.current_card_num}')
+        while True:       
+            h_or_l = input('Higher or Lower [h/l]: ')
+            if (h_or_l.lower() == "h") or (h_or_l.lower() == "l"):
+                print(h_or_l)
+                break
+            else:
+                print(f"Sorry, {h_or_l} was not recognized.")
         
         self.total_points += self.cards.select_card(h_or_l)
 
@@ -60,9 +65,14 @@ class Director:
         
         
     def game_restart(self):
-        y_n = input('Play again? [y/n]: ')
-        if self.total_points > 0:
-            self.is_playing = (y_n == "y")
-        elif self.total_points <= 0:
-            print("Sorry! you are out of points.")
-            self.is_playing = False
+        while True:
+            y_n = input('Play again? [y/n]: ')
+            if (y_n.lower() == "y") or (y_n.lower() == "n"):
+                if self.total_points > 0:
+                    self.is_playing = (y_n == "y")
+                elif self.total_points <= 0:
+                    print("Sorry! you are out of points.")
+                    self.is_playing = False
+                break
+            else:
+                print(f"Sorry, {y_n} was not recognized.")
