@@ -38,8 +38,9 @@ class Director:
         ''' 
         if not self.is_playing:
             return
-            
-        print(f'The card is {self.cards.current_card_num}')
+        print('              ___')
+        print(f'The card is  | {self.cards.current_card_num} |')
+        print('             |___|')
         while True:       
             h_or_l = input('Higher or Lower [h/l]: ')
             if (h_or_l.lower() == "h") or (h_or_l.lower() == "l"):
@@ -58,7 +59,9 @@ class Director:
         if not self.is_playing:
             return
 
-        print(f'The next card was: {self.cards.current_card_num}')
+        print('                    ___')
+        print(f'The next card was: | {self.cards.current_card_num} |')
+        print('                   |___|')
         print(f"Your score is: {self.total_points}\n")
         self.is_playing == (self.total_points > 0)
         
